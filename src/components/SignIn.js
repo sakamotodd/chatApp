@@ -9,103 +9,105 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 function Copyright() {
-	return (
-		<Typography variant="body2" color="textSecondary" align="center">
-			{"Copyright © "}
-			<Link
-				color="inherit"
-				href="https://twitter.com/skmt_dgr"
-				target="_blank"
-				rel="noopener"
-			>
-				だいごろうさん
-			</Link>{" "}
-		</Typography>
-	);
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {"Copyright © "}
+            <Link
+                color="inherit"
+                href="https://twitter.com/skmt_dgr"
+                target="_blank"
+                rel="noopener"
+            >
+                だいごろうさん
+            </Link>{" "}
+        </Typography>
+    );
 }
 
 const useStyles = makeStyles((theme) => ({
-	paper: {
-		marginTop: theme.spacing(8),
-		display: "flex",
-		flexDirection: "column",
-		alignItems: "center",
-	},
-	avatar: {
-		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main,
-	},
-	form: {
-		width: "100%", // Fix IE 11 issue.
-		marginTop: theme.spacing(1),
-	},
-	submit: {
-		margin: theme.spacing(3, 0, 2),
-	},
+    paper: {
+        marginTop: theme.spacing(8),
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+        width: "100%", // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
 }));
 
 export default function SignIn({ setName }) {
-	const classes = useStyles();
-	const [disabled, setDisabled] = useState(true);
-	const [string, setString] = useState("");
-	const [isComposed, setIsComposed] = useState(false);
-	// console.log({disabled, string, isComposed});
+    const classes = useStyles();
+    const [disabled, setDisabled] = useState(true);
+    const [string, setString] = useState("");
+    const [isComposed, setIsComposed] = useState(false);
+    //console.log({disabled, string, isComposed});
 
-	useEffect(() => {
-		const disabled = string === "";
-		setDisabled(disabled);
-	}, [string]);
+    useEffect(() => {
+        const disabled = string === "";
+        setDisabled(disabled);
+    }, [string]);
 
-	return (
-		<Container component="main" maxWidth="xs">
-			<CssBaseline />
-			<div className={classes.paper}>
-				<Typography component="h1" variant="h5">
-					ようこそ
-				</Typography>
-				<form className={classes.form} noValidate>
-					<TextField
-						variant="outlined"
-						margin="normal"
-						required
-						fullWidth
-						id="name"
-						label="ニックネーム"
-						name="name"
-						autoFocus
-						onChange={(e) => setString(e.target.value)}
-						onKeyDown={(e) => {
-							console.log({ key: e.key });
-							if (isComposed) return;
+    return (
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <div className={classes.paper}>
+                <Typography component="h1" variant="h5">
+                    ようこそ
+                </Typography>
+                <form className={classes.form} noValidate>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="name"
+                        label="ニックネーム"
+                        name="name"
+                        autoFocus
+                        onChange={(e) => setString(e.target.value)}
+                        onKeyDown={(e) => {
+                           // console.log({ key: e.key });
+                            if (isComposed) return;
 
-							if (e.key === "Enter") {
-								setName(e.target.value);
-								e.preventDefault();
-							}
-						}}
-						onCompositionStart={() => setIsComposed(true)}
-						onCompositionEnd={() => setIsComposed(false)}
-					/>
+                            if (e.key === "Enter") {
+                                setName(e.target.value);
+                                e.preventDefault();
+                            }
+                        }}
+                        onCompositionStart={() => setIsComposed(true)}
+                        onCompositionEnd={() => setIsComposed(false)}
+                    />
 
-					<Button
-						type="button"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.submit}
-						disabled={disabled}
-						onClick={() => {
-							setName(string);
-						}}
-					>
-						はじめる
-					</Button>
-				</form>
-			</div>
-			<Box mt={8}>
-				<Copyright />
-			</Box>
-		</Container>
-	);
-	//push反映
+                    <Button
+                        type="button"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        disabled={disabled}
+                        onClick={() => {
+                            setName(string);
+            
+                        }}
+                    >
+                        はじめる
+                    </Button>
+                </form>
+            </div>
+            <Box mt={8}>
+                <Copyright />
+            </Box>
+        </Container>
+    );
+    //push反映
 }
+
