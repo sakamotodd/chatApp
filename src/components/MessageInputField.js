@@ -17,9 +17,9 @@ const MessageInputField = ({name}) => {
   return (
     <div className={classes.root}>
       <Grid container>
-        <Grid xs={1}><Avatar src={avatarPath}/></Grid>
-        <Grid xs={10}> <MessageField name={name} setText={setText} text={text} /> </Grid>
-        <Grid xs={1}>ボタン</Grid>
+        <Grid item xs={1}><Avatar src={avatarPath}/></Grid>
+        <Grid item xs={10}> <MessageField name={name} setText={setText} text={text} /> </Grid>
+        <Grid item xs={1}>ボタン</Grid>
       </Grid>
     </div>
   );
