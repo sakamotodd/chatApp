@@ -18,7 +18,7 @@ function Copyright() {
                 target="_blank"
                 rel="noopener"
             >
-                だいごろうさん
+                だいごろう
             </Link>{" "}
         </Typography>
     );
